@@ -1,0 +1,78 @@
+var _user$project$SalariesChart$subscriptions = function (model) {
+	return _elm_lang$core$Platform_Sub$none;
+};
+var _user$project$SalariesChart$viewSalary = function (salary) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(
+				_elm_lang$core$Basics$toString(salary.pay)),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$SalariesChart$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				A2(_elm_lang$core$List$map, _user$project$SalariesChart$viewSalary, model.salaries)),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$SalariesChart$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		if (_p0.ctor === 'Salaries') {
+			return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+		} else {
+			if (_p0._0.ctor === 'Ok') {
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{salaries: _p0._0._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			} else {
+				var _p1 = A2(_elm_lang$core$Debug$log, 'Error is:', _p0._0._0);
+				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+			}
+		}
+	});
+var _user$project$SalariesChart$Salary = function (a) {
+	return {pay: a};
+};
+var _user$project$SalariesChart$decodeSalary = A3(
+	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+	'pay',
+	_elm_lang$core$Json_Decode$int,
+	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$SalariesChart$Salary));
+var _user$project$SalariesChart$decodeSalaries = _elm_lang$core$Json_Decode$list(_user$project$SalariesChart$decodeSalary);
+var _user$project$SalariesChart$Model = function (a) {
+	return {salaries: a};
+};
+var _user$project$SalariesChart$NewSalaries = function (a) {
+	return {ctor: 'NewSalaries', _0: a};
+};
+var _user$project$SalariesChart$getSalaries = function () {
+	var url = 'http://localhost:8080/salaries';
+	var request = A2(_elm_lang$http$Http$get, url, _user$project$SalariesChart$decodeSalaries);
+	return A2(_elm_lang$http$Http$send, _user$project$SalariesChart$NewSalaries, request);
+}();
+var _user$project$SalariesChart$init = {
+	ctor: '_Tuple2',
+	_0: _user$project$SalariesChart$Model(
+		{
+			ctor: '::',
+			_0: {pay: 70000},
+			_1: {ctor: '[]'}
+		}),
+	_1: _user$project$SalariesChart$getSalaries
+};
+var _user$project$SalariesChart$Salaries = {ctor: 'Salaries'};
