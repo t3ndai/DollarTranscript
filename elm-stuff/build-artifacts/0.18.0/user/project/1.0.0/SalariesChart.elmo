@@ -45,6 +45,25 @@ var _user$project$SalariesChart$update = F2(
 			}
 		}
 	});
+var _user$project$SalariesChart$initModel = {
+	salaries: {
+		ctor: '::',
+		_0: {pay: 70000},
+		_1: {
+			ctor: '::',
+			_0: {pay: 90000},
+			_1: {
+				ctor: '::',
+				_0: {pay: 55000},
+				_1: {
+					ctor: '::',
+					_0: {pay: 86000},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	}
+};
 var _user$project$SalariesChart$Salary = function (a) {
 	return {pay: a};
 };
@@ -61,18 +80,11 @@ var _user$project$SalariesChart$NewSalaries = function (a) {
 	return {ctor: 'NewSalaries', _0: a};
 };
 var _user$project$SalariesChart$getSalaries = function () {
-	var url = 'http://localhost:8080/salaries';
+	var url = 'http://api.dollartranscript.xyz/salaries';
 	var request = A2(_elm_lang$http$Http$get, url, _user$project$SalariesChart$decodeSalaries);
 	return A2(_elm_lang$http$Http$send, _user$project$SalariesChart$NewSalaries, request);
 }();
-var _user$project$SalariesChart$init = {
-	ctor: '_Tuple2',
-	_0: _user$project$SalariesChart$Model(
-		{
-			ctor: '::',
-			_0: {pay: 70000},
-			_1: {ctor: '[]'}
-		}),
-	_1: _user$project$SalariesChart$getSalaries
-};
+var _user$project$SalariesChart$init = {ctor: '_Tuple2', _0: _user$project$SalariesChart$initModel, _1: _user$project$SalariesChart$getSalaries};
+var _user$project$SalariesChart$main = _elm_lang$html$Html$program(
+	{init: _user$project$SalariesChart$init, view: _user$project$SalariesChart$view, update: _user$project$SalariesChart$update, subscriptions: _user$project$SalariesChart$subscriptions})();
 var _user$project$SalariesChart$Salaries = {ctor: 'Salaries'};

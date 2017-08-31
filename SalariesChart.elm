@@ -5,6 +5,19 @@ import Http
 import Json.Decode as Decode exposing (..)
 import Json.Decode.Pipeline exposing (decode, required)
 
+
+-- RUN
+
+main = 
+    Html.program
+    { init = init
+    , view = view 
+    , update = update 
+    , subscriptions = subscriptions 
+    }
+
+
+
 -- MODEL 
 
 type alias Salary = 
@@ -16,10 +29,20 @@ type alias Model =
       salaries : List Salary   
     }
 
+initModel : Model 
+initModel  = 
+  { salaries = 
+    [ { pay = 70000}
+    , { pay = 90000 }
+    , { pay = 55000 } 
+    , { pay =86000 }
+    ] 
+  }
+
 
 init : ( Model, Cmd Msg)
 init = 
-    ( Model [ { pay = 70000 } ],  getSalaries )
+    ( initModel,  getSalaries )
 
 
 
@@ -82,7 +105,7 @@ subscriptions model =
  
 getSalaries = 
     let 
-        url = "http://localhost:8080/salaries" -- replace localhost with api.dollarTranscript.xyz/salaries
+        url = "http://api.dollartranscript.xyz/salaries" -- replace localhost with api.dollarTranscript.xyz/salaries
 
         request = 
         

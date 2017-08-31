@@ -1,0 +1,417 @@
+var _user$project$Job$subscriptions = function (model) {
+	return _elm_lang$core$Platform_Sub$none;
+};
+var _user$project$Job$voidDecoder = _elm_lang$core$Json_Decode$succeed(
+	{ctor: '_Tuple0'});
+var _user$project$Job$encodeJob = function (model) {
+	return _elm_lang$core$Json_Encode$object(
+		{
+			ctor: '::',
+			_0: {
+				ctor: '_Tuple2',
+				_0: 'title',
+				_1: _elm_lang$core$Json_Encode$string(model.title)
+			},
+			_1: {
+				ctor: '::',
+				_0: {
+					ctor: '_Tuple2',
+					_0: 'location',
+					_1: _elm_lang$core$Json_Encode$string(model.location)
+				},
+				_1: {
+					ctor: '::',
+					_0: {
+						ctor: '_Tuple2',
+						_0: 'company',
+						_1: _elm_lang$core$Json_Encode$string(model.company)
+					},
+					_1: {
+						ctor: '::',
+						_0: {
+							ctor: '_Tuple2',
+							_0: 'pay',
+							_1: _elm_lang$core$Json_Encode$int(model.pay)
+						},
+						_1: {
+							ctor: '::',
+							_0: {
+								ctor: '_Tuple2',
+								_0: 'college',
+								_1: _elm_lang$core$Json_Encode$string(model.college)
+							},
+							_1: {
+								ctor: '::',
+								_0: {
+									ctor: '_Tuple2',
+									_0: 'major',
+									_1: _elm_lang$core$Json_Encode$string(model.major)
+								},
+								_1: {
+									ctor: '::',
+									_0: {
+										ctor: '_Tuple2',
+										_0: 'sponsorship',
+										_1: _elm_lang$core$Json_Encode$bool(model.sponsorship)
+									},
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			}
+		});
+};
+var _user$project$Job$emptyJob = {title: '', location: '', pay: 0, company: '', major: '', sponsorship: false, latitude: 0.0, longitude: 0.0, college: ''};
+var _user$project$Job$initModel = _user$project$Job$emptyJob;
+var _user$project$Job$init = {ctor: '_Tuple2', _0: _user$project$Job$initModel, _1: _elm_lang$core$Platform_Cmd$none};
+var _user$project$Job$Model = F9(
+	function (a, b, c, d, e, f, g, h, i) {
+		return {title: a, location: b, pay: c, company: d, sponsorship: e, latitude: f, longitude: g, major: h, college: i};
+	});
+var _user$project$Job$Job = function (a) {
+	return {ctor: 'Job', _0: a};
+};
+var _user$project$Job$postJob = function (model) {
+	var body = _elm_lang$http$Http$jsonBody(
+		_user$project$Job$encodeJob(model));
+	var url = 'http://127.0.0.1:8080/jobs';
+	var request = A3(_elm_lang$http$Http$post, url, body, _user$project$Job$voidDecoder);
+	return A2(_elm_lang$http$Http$send, _user$project$Job$Job, request);
+};
+var _user$project$Job$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		switch (_p0.ctor) {
+			case 'InitialScreen':
+				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+			case 'Title':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{title: _p0._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Location':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{location: _p0._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Company':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{company: _p0._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Pay':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{
+							pay: A2(
+								_elm_lang$core$Result$withDefault,
+								0,
+								_elm_lang$core$String$toInt(_p0._0))
+						}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'College':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{college: _p0._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Major':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{major: _p0._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Sponsorship':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{sponsorship: _p0._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Add':
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: _user$project$Job$postJob(model)
+				};
+			default:
+				if (_p0._0.ctor === 'Err') {
+					var _p1 = A2(_elm_lang$core$Debug$log, 'Error is:', _p0._0._0);
+					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+				} else {
+					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+				}
+		}
+	});
+var _user$project$Job$Add = {ctor: 'Add'};
+var _user$project$Job$Sponsorship = function (a) {
+	return {ctor: 'Sponsorship', _0: a};
+};
+var _user$project$Job$Major = function (a) {
+	return {ctor: 'Major', _0: a};
+};
+var _user$project$Job$College = function (a) {
+	return {ctor: 'College', _0: a};
+};
+var _user$project$Job$Pay = function (a) {
+	return {ctor: 'Pay', _0: a};
+};
+var _user$project$Job$Company = function (a) {
+	return {ctor: 'Company', _0: a};
+};
+var _user$project$Job$Location = function (a) {
+	return {ctor: 'Location', _0: a};
+};
+var _user$project$Job$Title = function (a) {
+	return {ctor: 'Title', _0: a};
+};
+var _user$project$Job$job = function (model) {
+	return A2(
+		_elm_lang$html$Html$article,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$input,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$type_('text'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$placeholder('Title'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Events$onInput(_user$project$Job$Title),
+									_1: {ctor: '[]'}
+								}
+							}
+						},
+						{ctor: '[]'}),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$input,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$type_('text'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$placeholder('Location'),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Events$onInput(_user$project$Job$Location),
+										_1: {ctor: '[]'}
+									}
+								}
+							},
+							{ctor: '[]'}),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$input,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$type_('text'),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$placeholder('Company'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html_Events$onInput(_user$project$Job$Company),
+											_1: {ctor: '[]'}
+										}
+									}
+								},
+								{ctor: '[]'}),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$input,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$type_('number'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$placeholder('Pay'),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$html$Html_Events$onInput(_user$project$Job$Pay),
+												_1: {ctor: '[]'}
+											}
+										}
+									},
+									{ctor: '[]'}),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$input,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$type_('text'),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$placeholder('College'),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$html$Html_Events$onInput(_user$project$Job$College),
+													_1: {ctor: '[]'}
+												}
+											}
+										},
+										{ctor: '[]'}),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$div,
+									{ctor: '[]'},
+									{
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$input,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$type_('text'),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$placeholder('Major'),
+													_1: {
+														ctor: '::',
+														_0: _elm_lang$html$Html_Events$onInput(_user$project$Job$Major),
+														_1: {ctor: '[]'}
+													}
+												}
+											},
+											{ctor: '[]'}),
+										_1: {ctor: '[]'}
+									}),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$div,
+										{ctor: '[]'},
+										{
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$label,
+												{ctor: '[]'},
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html$text('Sponsorship'),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_elm_lang$html$Html$input,
+															{
+																ctor: '::',
+																_0: _elm_lang$html$Html_Attributes$type_('radio'),
+																_1: {
+																	ctor: '::',
+																	_0: _elm_lang$html$Html_Events$onClick(
+																		_user$project$Job$Sponsorship(true)),
+																	_1: {ctor: '[]'}
+																}
+															},
+															{ctor: '[]'}),
+														_1: {ctor: '[]'}
+													}
+												}),
+											_1: {ctor: '[]'}
+										}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$div,
+											{ctor: '[]'},
+											{
+												ctor: '::',
+												_0: A2(
+													_elm_lang$html$Html$button,
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html_Events$onClick(_user$project$Job$Add),
+														_1: {ctor: '[]'}
+													},
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html$text('+'),
+														_1: {ctor: '[]'}
+													}),
+												_1: {ctor: '[]'}
+											}),
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		});
+};
+var _user$project$Job$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$article,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _user$project$Job$job(model),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$Job$main = _elm_lang$html$Html$program(
+	{init: _user$project$Job$init, view: _user$project$Job$view, update: _user$project$Job$update, subscriptions: _user$project$Job$subscriptions})();
+var _user$project$Job$InitialScreen = {ctor: 'InitialScreen'};

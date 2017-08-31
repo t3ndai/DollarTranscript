@@ -60,105 +60,18 @@ var _user$project$Main$update = F2(
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
 						{
-							job: A2(
-								_elm_lang$core$Maybe$map,
-								_user$project$Main$setJobTitle(_p0._0),
-								model.job)
-						}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			case 'Location':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{
-							job: A2(
-								_elm_lang$core$Maybe$map,
-								_user$project$Main$setJobLocation(_p0._0),
-								model.job)
-						}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			case 'Company':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{
-							job: A2(
-								_elm_lang$core$Maybe$map,
-								function (job) {
-									return _elm_lang$core$Native_Utils.update(
-										job,
-										{company: _p0._0});
-								},
-								model.job)
-						}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			case 'Pay':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{
-							job: A2(
-								_elm_lang$core$Maybe$map,
-								function (job) {
-									return _elm_lang$core$Native_Utils.update(
-										job,
-										{
-											pay: A2(
-												_elm_lang$core$Result$withDefault,
-												0,
-												_elm_lang$core$String$toInt(_p0._0))
-										});
-								},
-								model.job)
-						}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			case 'Major':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{
-							job: A2(
-								_elm_lang$core$Maybe$map,
-								function (job) {
-									return _elm_lang$core$Native_Utils.update(
-										job,
-										{major: _p0._0});
-								},
-								model.job)
+							job: {title: _p0._0}
 						}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
 			default:
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{
-							job: A2(
-								_elm_lang$core$Maybe$map,
-								function (job) {
-									return _elm_lang$core$Native_Utils.update(
-										job,
-										{sponsorship: _p0._0});
-								},
-								model.job)
-						}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
+				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
 		}
 	});
-var _user$project$Main$emptyJob = {title: '', location: '', pay: 0, company: '', major: '', sponsorship: false, latitude: 0.0, longitude: 0.0};
+var _user$project$Main$emptyJob = {title: ''};
 var _user$project$Main$initModel = {
 	salaries: {ctor: '[]'},
-	job: _elm_lang$core$Maybe$Just(_user$project$Main$emptyJob)
+	job: _user$project$Main$emptyJob
 };
 var _user$project$Main$Salary = function (a) {
 	return {pay: a};
@@ -169,29 +82,14 @@ var _user$project$Main$decodeSalary = A3(
 	_elm_lang$core$Json_Decode$int,
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Main$Salary));
 var _user$project$Main$decodeSalaries = _elm_lang$core$Json_Decode$list(_user$project$Main$decodeSalary);
-var _user$project$Main$Job = F8(
-	function (a, b, c, d, e, f, g, h) {
-		return {title: a, location: b, pay: c, company: d, sponsorship: e, latitude: f, longitude: g, major: h};
-	});
+var _user$project$Main$Job = function (a) {
+	return {title: a};
+};
 var _user$project$Main$Model = F2(
 	function (a, b) {
 		return {salaries: a, job: b};
 	});
-var _user$project$Main$Sponsorship = function (a) {
-	return {ctor: 'Sponsorship', _0: a};
-};
-var _user$project$Main$Major = function (a) {
-	return {ctor: 'Major', _0: a};
-};
-var _user$project$Main$Pay = function (a) {
-	return {ctor: 'Pay', _0: a};
-};
-var _user$project$Main$Company = function (a) {
-	return {ctor: 'Company', _0: a};
-};
-var _user$project$Main$Location = function (a) {
-	return {ctor: 'Location', _0: a};
-};
+var _user$project$Main$Add = {ctor: 'Add'};
 var _user$project$Main$Title = function (a) {
 	return {ctor: 'Title', _0: a};
 };
@@ -232,136 +130,20 @@ var _user$project$Main$job = function (model) {
 					{
 						ctor: '::',
 						_0: A2(
-							_elm_lang$html$Html$input,
+							_elm_lang$html$Html$button,
 							{
 								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$type_('text'),
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$placeholder('Location'),
-									_1: {
-										ctor: '::',
-										_0: _elm_lang$html$Html_Events$onInput(_user$project$Main$Location),
-										_1: {ctor: '[]'}
-									}
-								}
+								_0: _elm_lang$html$Html_Events$onClick(_user$project$Main$Add),
+								_1: {ctor: '[]'}
 							},
-							{ctor: '[]'}),
-						_1: {ctor: '[]'}
-					}),
-				_1: {
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$div,
-						{ctor: '[]'},
-						{
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$input,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$type_('text'),
-									_1: {
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$placeholder('Company'),
-										_1: {
-											ctor: '::',
-											_0: _elm_lang$html$Html_Events$onInput(_user$project$Main$Company),
-											_1: {ctor: '[]'}
-										}
-									}
-								},
-								{ctor: '[]'}),
-							_1: {ctor: '[]'}
-						}),
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$div,
-							{ctor: '[]'},
 							{
 								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$input,
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$type_('number'),
-										_1: {
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$placeholder('Pay'),
-											_1: {
-												ctor: '::',
-												_0: _elm_lang$html$Html_Events$onInput(_user$project$Main$Pay),
-												_1: {ctor: '[]'}
-											}
-										}
-									},
-									{ctor: '[]'}),
+								_0: _elm_lang$html$Html$text('+'),
 								_1: {ctor: '[]'}
 							}),
-						_1: {
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$div,
-								{ctor: '[]'},
-								{
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$input,
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$type_('text'),
-											_1: {
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$placeholder('Major'),
-												_1: {
-													ctor: '::',
-													_0: _elm_lang$html$Html_Events$onInput(_user$project$Main$Major),
-													_1: {ctor: '[]'}
-												}
-											}
-										},
-										{ctor: '[]'}),
-									_1: {ctor: '[]'}
-								}),
-							_1: {
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$div,
-									{ctor: '[]'},
-									{
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$label,
-											{ctor: '[]'},
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html$text('Sponsorship'),
-												_1: {
-													ctor: '::',
-													_0: A2(
-														_elm_lang$html$Html$input,
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$type_('radio'),
-															_1: {
-																ctor: '::',
-																_0: _elm_lang$html$Html_Events$onClick(
-																	_user$project$Main$Sponsorship(true)),
-																_1: {ctor: '[]'}
-															}
-														},
-														{ctor: '[]'}),
-													_1: {ctor: '[]'}
-												}
-											}),
-										_1: {ctor: '[]'}
-									}),
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
 			}
 		});
 };
