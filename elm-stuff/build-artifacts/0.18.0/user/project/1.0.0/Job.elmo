@@ -54,7 +54,23 @@ var _user$project$Job$encodeJob = function (model) {
 										_0: 'sponsorship',
 										_1: _elm_lang$core$Json_Encode$bool(model.sponsorship)
 									},
-									_1: {ctor: '[]'}
+									_1: {
+										ctor: '::',
+										_0: {
+											ctor: '_Tuple2',
+											_0: 'latitude',
+											_1: _elm_lang$core$Json_Encode$float(model.latitude)
+										},
+										_1: {
+											ctor: '::',
+											_0: {
+												ctor: '_Tuple2',
+												_0: 'longitude',
+												_1: _elm_lang$core$Json_Encode$float(model.longitude)
+											},
+											_1: {ctor: '[]'}
+										}
+									}
 								}
 							}
 						}

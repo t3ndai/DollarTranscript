@@ -193,6 +193,8 @@ encodeJob model =
             , ( "college", Encode.string model.college )
             , ( "major", Encode.string model.major ) 
             , ( "sponsorship", Encode.bool model.sponsorship )
+            , ( "latitude", Encode.float model.latitude )
+            , ( "longitude", Encode.float model.longitude )
             ]
 
 
