@@ -373,11 +373,10 @@ var _user$project$Job$job = function (model) {
 															_elm_lang$html$Html$input,
 															{
 																ctor: '::',
-																_0: _elm_lang$html$Html_Attributes$type_('radio'),
+																_0: _elm_lang$html$Html_Attributes$type_('checkbox'),
 																_1: {
 																	ctor: '::',
-																	_0: _elm_lang$html$Html_Events$onClick(
-																		_user$project$Job$Sponsorship(true)),
+																	_0: _elm_lang$html$Html_Events$onCheck(_user$project$Job$Sponsorship),
 																	_1: {ctor: '[]'}
 																}
 															},

@@ -36,53 +36,64 @@ var _user$project$Areas$majors = function (model) {
 		{
 			ctor: '::',
 			_0: A2(
-				_elm_lang$html$Html$table,
+				_elm_lang$html$Html$h1,
 				{ctor: '[]'},
 				{
 					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$thead,
-						{ctor: '[]'},
-						{
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$tr,
-								{ctor: '[]'},
-								{
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$th,
-										{ctor: '[]'},
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html$text('Major'),
-											_1: {ctor: '[]'}
-										}),
-									_1: {
+					_0: _elm_lang$html$Html$text('Major Rankings'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$table,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$thead,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$tr,
+									{ctor: '[]'},
+									{
 										ctor: '::',
 										_0: A2(
 											_elm_lang$html$Html$th,
 											{ctor: '[]'},
 											{
 												ctor: '::',
-												_0: _elm_lang$html$Html$text('Average'),
+												_0: _elm_lang$html$Html$text('Major'),
 												_1: {ctor: '[]'}
 											}),
-										_1: {ctor: '[]'}
-									}
-								}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$th,
+												{ctor: '[]'},
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html$text('Average'),
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										}
+									}),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$tbody,
+								{ctor: '[]'},
+								A2(_elm_lang$core$List$map, _user$project$Areas$majorRow, model.majors)),
 							_1: {ctor: '[]'}
-						}),
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$tbody,
-							{ctor: '[]'},
-							A2(_elm_lang$core$List$map, _user$project$Areas$majorRow, model.majors)),
-						_1: {ctor: '[]'}
-					}
-				}),
-			_1: {ctor: '[]'}
+						}
+					}),
+				_1: {ctor: '[]'}
+			}
 		});
 };
 var _user$project$Areas$areaRow = function (model) {
@@ -120,53 +131,64 @@ var _user$project$Areas$areas = function (model) {
 		{
 			ctor: '::',
 			_0: A2(
-				_elm_lang$html$Html$table,
+				_elm_lang$html$Html$h1,
 				{ctor: '[]'},
 				{
 					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$thead,
-						{ctor: '[]'},
-						{
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$tr,
-								{ctor: '[]'},
-								{
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$th,
-										{ctor: '[]'},
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html$text('Location'),
-											_1: {ctor: '[]'}
-										}),
-									_1: {
+					_0: _elm_lang$html$Html$text('Area Rankings'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$table,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$thead,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$tr,
+									{ctor: '[]'},
+									{
 										ctor: '::',
 										_0: A2(
 											_elm_lang$html$Html$th,
 											{ctor: '[]'},
 											{
 												ctor: '::',
-												_0: _elm_lang$html$Html$text('Average'),
+												_0: _elm_lang$html$Html$text('Location'),
 												_1: {ctor: '[]'}
 											}),
-										_1: {ctor: '[]'}
-									}
-								}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$th,
+												{ctor: '[]'},
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html$text('Average'),
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										}
+									}),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$tbody,
+								{ctor: '[]'},
+								A2(_elm_lang$core$List$map, _user$project$Areas$areaRow, model.areas)),
 							_1: {ctor: '[]'}
-						}),
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$tbody,
-							{ctor: '[]'},
-							A2(_elm_lang$core$List$map, _user$project$Areas$areaRow, model.areas)),
-						_1: {ctor: '[]'}
-					}
-				}),
-			_1: {ctor: '[]'}
+						}
+					}),
+				_1: {ctor: '[]'}
+			}
 		});
 };
 var _user$project$Areas$view = function (model) {

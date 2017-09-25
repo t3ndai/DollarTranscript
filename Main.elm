@@ -192,48 +192,6 @@ viewSalary salary =
     div [] 
     [ text (toString salary.pay) ]
 
-job : Model -> Html Msg 
-job model = 
-
-    article []
-    [   
-        div []
-        [
-            input [ type_ "text", placeholder "Title", onInput Title ] []
-        ]
-    {-
-    ,   div []
-        [
-            input [ type_ "text", placeholder "Location", onInput Location ] []
-        ]
-    
-    ,   div []
-        [
-            input [ type_ "text", placeholder "Company", onInput Company ] []
-        ]
-    ,   div []
-        [
-            input [ type_ "number", placeholder "Pay", onInput Pay ] []
-        ]
-    ,   div []
-        [
-            input [ type_ "text", placeholder "Major", onInput Major] []
-        ]
-    ,   div []
-        [    
-            label []
-            [
-                text "Sponsorship"
-            ,   input [ type_ "radio", onClick ( Sponsorship True ) ] []
-               
-            ]
-        ]
-    -}
-    ,   div []
-            [ button [ onClick Add  ] [text "+"] ] 
-        
-    ]
-
 
 -- SUBSCRIPTIONS 
 

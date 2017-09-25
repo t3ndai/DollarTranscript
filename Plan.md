@@ -43,3 +43,17 @@ What are the logical groupings of our app
 				* major 
 				* sponsorship 	
 			* submit button 
+	* Search 
+	    * search form 
+	 
+	    		 location 
+	    		 pay 
+	    		 college 
+
+		* search results 
+		
+				 job title 
+				 pay 
+				 location
+				 college 
+				  

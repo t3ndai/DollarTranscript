@@ -95,7 +95,9 @@ view model =
 areas : Model -> Html Msg 
 areas model  =
     article []
-    [ table[]
+    [ 
+        h1 [] [ text "Area Rankings" ]
+    ,   table[]
         [   
             thead []
             [
@@ -121,7 +123,8 @@ areaRow model  =
 majors : Model -> Html Msg 
 majors model  =
     article []
-    [ table[]
+    [ h1 [] [text "Major Rankings"]
+    ,   table[]
         [   
             thead []
             [

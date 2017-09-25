@@ -170,7 +170,7 @@ job model =
             label []
             [
                 text "Sponsorship"
-            ,   input [ type_ "radio", onClick ( Sponsorship True ) ] []
+            ,   input [ type_ "checkbox", onCheck Sponsorship ] []
                
             ]
         ]
@@ -208,6 +208,7 @@ voidDecoder =
     Decode.succeed ()
 
 -- HTTP 
+
 
 postJob model = 
     let 

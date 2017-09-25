@@ -1,0 +1,530 @@
+var _user$project$Search$subscriptions = function (model) {
+	return _elm_lang$core$Platform_Sub$none;
+};
+var _user$project$Search$encodeSearch = function (model) {
+	return _elm_lang$core$Json_Encode$object(
+		{
+			ctor: '::',
+			_0: {
+				ctor: '_Tuple2',
+				_0: 'location',
+				_1: _elm_lang$core$Json_Encode$string(model.location)
+			},
+			_1: {
+				ctor: '::',
+				_0: {
+					ctor: '_Tuple2',
+					_0: 'college',
+					_1: _elm_lang$core$Json_Encode$string(model.college)
+				},
+				_1: {
+					ctor: '::',
+					_0: {
+						ctor: '_Tuple2',
+						_0: 'pay',
+						_1: _elm_lang$core$Json_Encode$int(model.pay)
+					},
+					_1: {
+						ctor: '::',
+						_0: {
+							ctor: '_Tuple2',
+							_0: 'searchType',
+							_1: _elm_lang$core$Json_Encode$string(model.searchType)
+						},
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		});
+};
+var _user$project$Search$viewJob = function (job) {
+	var jobStyle = _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
+			_1: {ctor: '[]'}
+		});
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: jobStyle,
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(job.title),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$br,
+					{ctor: '[]'},
+					{ctor: '[]'}),
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$html$Html$text(job.location),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$br,
+							{ctor: '[]'},
+							{ctor: '[]'}),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(
+								_elm_lang$core$Basics$toString(job.pay)),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$br,
+									{ctor: '[]'},
+									{ctor: '[]'}),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html$text(job.college),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$br,
+											{ctor: '[]'},
+											{ctor: '[]'}),
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		});
+};
+var _user$project$Search$viewSearchResults = function (model) {
+	var resultsStyle = _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'margin', _1: '2%'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: 'row'},
+					_1: {ctor: '[]'}
+				}
+			}
+		});
+	return A2(
+		_elm_lang$html$Html$article,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: resultsStyle,
+					_1: {ctor: '[]'}
+				},
+				A2(_elm_lang$core$List$map, _user$project$Search$viewJob, model.jobs)),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$Search$initModel = {
+	location: '',
+	college: '',
+	pay: 0,
+	searchType: '',
+	jobs: {ctor: '[]'}
+};
+var _user$project$Search$init = {ctor: '_Tuple2', _0: _user$project$Search$initModel, _1: _elm_lang$core$Platform_Cmd$none};
+var _user$project$Search$Model = F5(
+	function (a, b, c, d, e) {
+		return {location: a, college: b, pay: c, searchType: d, jobs: e};
+	});
+var _user$project$Search$Job = F4(
+	function (a, b, c, d) {
+		return {title: a, location: b, pay: c, college: d};
+	});
+var _user$project$Search$decodeJob = A3(
+	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+	'college',
+	_elm_lang$core$Json_Decode$string,
+	A3(
+		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+		'pay',
+		_elm_lang$core$Json_Decode$int,
+		A3(
+			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+			'location',
+			_elm_lang$core$Json_Decode$string,
+			A3(
+				_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+				'title',
+				_elm_lang$core$Json_Decode$string,
+				_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Search$Job)))));
+var _user$project$Search$decodeSearchResults = _elm_lang$core$Json_Decode$list(_user$project$Search$decodeJob);
+var _user$project$Search$Exact = {ctor: 'Exact'};
+var _user$project$Search$Any = {ctor: 'Any'};
+var _user$project$Search$SearchResults = function (a) {
+	return {ctor: 'SearchResults', _0: a};
+};
+var _user$project$Search$performSearch = function (model) {
+	var body = _elm_lang$http$Http$jsonBody(
+		_user$project$Search$encodeSearch(model));
+	var url = 'http://127.0.0.1:8080/search';
+	var request = A3(_elm_lang$http$Http$post, url, body, _user$project$Search$decodeSearchResults);
+	return A2(_elm_lang$http$Http$send, _user$project$Search$SearchResults, request);
+};
+var _user$project$Search$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		switch (_p0.ctor) {
+			case 'Location':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{location: _p0._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'College':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{college: _p0._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Pay':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{
+							pay: A2(
+								_elm_lang$core$Result$withDefault,
+								0,
+								_elm_lang$core$String$toInt(_p0._0))
+						}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'SwitchTo':
+				var _p1 = _p0._0;
+				if (_p1.ctor === 'Any') {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{searchType: 'or'}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{searchType: 'and'}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				}
+			case 'PerformSearch':
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: _user$project$Search$performSearch(model)
+				};
+			default:
+				if (_p0._0.ctor === 'Ok') {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{jobs: _p0._0._0}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					var _p2 = A2(_elm_lang$core$Debug$log, 'Error is:', _p0._0._0);
+					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+				}
+		}
+	});
+var _user$project$Search$PerformSearch = {ctor: 'PerformSearch'};
+var _user$project$Search$SwitchTo = function (a) {
+	return {ctor: 'SwitchTo', _0: a};
+};
+var _user$project$Search$Pay = function (a) {
+	return {ctor: 'Pay', _0: a};
+};
+var _user$project$Search$College = function (a) {
+	return {ctor: 'College', _0: a};
+};
+var _user$project$Search$Location = function (a) {
+	return {ctor: 'Location', _0: a};
+};
+var _user$project$Search$searchView = function (model) {
+	var buttonStyle = _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#F0F8FF'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '3px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'margin', _1: '20px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'borderStyle', _1: 'solid'},
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		});
+	var sliderStyle = _elm_lang$html$Html_Attributes$style(
+		{ctor: '[]'});
+	return A2(
+		_elm_lang$html$Html$article,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$input,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$type_('text'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$placeholder('Location/City'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Events$onInput(_user$project$Search$Location),
+									_1: {ctor: '[]'}
+								}
+							}
+						},
+						{ctor: '[]'}),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$input,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$type_('text'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$placeholder('College'),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Events$onInput(_user$project$Search$College),
+										_1: {ctor: '[]'}
+									}
+								}
+							},
+							{ctor: '[]'}),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$input,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$type_('range'),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$min('30000'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$max('150000'),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$html$Html_Events$onInput(_user$project$Search$Pay),
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								},
+								{ctor: '[]'}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$div,
+									{ctor: '[]'},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text('$30k'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html$text('$150k'),
+											_1: {ctor: '[]'}
+										}
+									}),
+								_1: {ctor: '[]'}
+							}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$label,
+									{ctor: '[]'},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text('Match'),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$label,
+												{ctor: '[]'},
+												{
+													ctor: '::',
+													_0: A2(
+														_elm_lang$html$Html$div,
+														{ctor: '[]'},
+														{ctor: '[]'}),
+													_1: {
+														ctor: '::',
+														_0: _elm_lang$html$Html$text('Any'),
+														_1: {
+															ctor: '::',
+															_0: A2(
+																_elm_lang$html$Html$input,
+																{
+																	ctor: '::',
+																	_0: _elm_lang$html$Html_Attributes$type_('radio'),
+																	_1: {
+																		ctor: '::',
+																		_0: _elm_lang$html$Html_Attributes$name('match'),
+																		_1: {
+																			ctor: '::',
+																			_0: _elm_lang$html$Html_Events$onClick(
+																				_user$project$Search$SwitchTo(_user$project$Search$Any)),
+																			_1: {ctor: '[]'}
+																		}
+																	}
+																},
+																{ctor: '[]'}),
+															_1: {
+																ctor: '::',
+																_0: _elm_lang$html$Html$text('Exact'),
+																_1: {
+																	ctor: '::',
+																	_0: A2(
+																		_elm_lang$html$Html$input,
+																		{
+																			ctor: '::',
+																			_0: _elm_lang$html$Html_Attributes$type_('radio'),
+																			_1: {
+																				ctor: '::',
+																				_0: _elm_lang$html$Html_Attributes$name('match'),
+																				_1: {
+																					ctor: '::',
+																					_0: _elm_lang$html$Html_Events$onClick(
+																						_user$project$Search$SwitchTo(_user$project$Search$Exact)),
+																					_1: {ctor: '[]'}
+																				}
+																			}
+																		},
+																		{ctor: '[]'}),
+																	_1: {ctor: '[]'}
+																}
+															}
+														}
+													}
+												}),
+											_1: {ctor: '[]'}
+										}
+									}),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$button,
+										{
+											ctor: '::',
+											_0: buttonStyle,
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$html$Html_Events$onClick(_user$project$Search$PerformSearch),
+												_1: {ctor: '[]'}
+											}
+										},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text('SEARCH'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		});
+};
+var _user$project$Search$view = function (model) {
+	var articleStyle = _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'flexFlow', _1: 'row wrap'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'margin', _1: '2%'},
+					_1: {ctor: '[]'}
+				}
+			}
+		});
+	return A2(
+		_elm_lang$html$Html$article,
+		{
+			ctor: '::',
+			_0: articleStyle,
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: _user$project$Search$searchView(model),
+			_1: {
+				ctor: '::',
+				_0: _user$project$Search$viewSearchResults(model),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$Search$main = _elm_lang$html$Html$program(
+	{init: _user$project$Search$init, update: _user$project$Search$update, view: _user$project$Search$view, subscriptions: _user$project$Search$subscriptions})();
