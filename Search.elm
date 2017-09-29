@@ -146,7 +146,9 @@ searchView model =
                     ,   ( "borderRadius", "3px" )
                     ,   ( "padding", "5px")
                     ,   ( "margin",  "20px")
-                    ,   ( "borderStyle", "solid")
+                    ,   ( "border", "none")
+                    ,   ( "fontSize", "20px")
+                    ,   ( "fontWeight", "bold")
                     ]
 
         
@@ -202,7 +204,7 @@ viewSearchResults model =
                     [
                         ( "margin", "2%" )
                     ,    ( "display", "flex")
-                    ,   ( "flexDirection", "row" ) 
+                    ,   ( "flexFlow", "row wrap" ) 
                     ]
 
     in 

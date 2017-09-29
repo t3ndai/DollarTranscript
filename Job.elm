@@ -128,56 +128,96 @@ update msg model =
 
 view : Model -> Html Msg 
 view model = 
-    article []
-    [
-        job model 
-    ]
+
+    let 
+        articleStyle : Attribute msg 
+        articleStyle =
+                style
+                    [
+                        ( "display", "flex" )
+                    ,   ( "flexFlow", "column wrap" )
+                    ,   ( "margin", "2%" )
+                    ]
+
+    in 
+
+        article [ articleStyle ]
+        [
+            div[][ text "Add Your Job 😉"]
+        ,   job model 
+        ]
 
 
 
 job : Model -> Html Msg 
 job model = 
 
-    article []
-    [   
-        div []
-        [
-            input [ type_ "text", placeholder "Title", onInput Title ] []
-        ]
-    ,   div []
-        [
-            input [ type_ "text", placeholder "Location", onInput Location ] []
-        ]
-    
-    ,   div []
-        [
-            input [ type_ "text", placeholder "Company", onInput Company ] []
-        ]
-    ,   div []
-        [
-            input [ type_ "number", placeholder "Pay", onInput Pay ] []
-        ]
-    ,   div []
-        [
-            input [ type_ "text", placeholder "College", onInput College ] []
-        ]
-    ,   div []
-        [
-            input [ type_ "text", placeholder "Major", onInput Major] []
-        ]
-    ,   div []
-        [    
-            label []
+    let 
+
+        buttonStyle : Attribute msg 
+        buttonStyle =
+                style 
+                    [
+                        ( "backgroundColor", "#F0F8FF" )
+                    ,   ( "borderRadius", "3px" )
+                    ,   ( "padding", "5px")
+                    ,   ( "margin",  "20px")
+                    ,   ( "border", "none")
+                    ,   ( "fontSize", "20px")
+                    ,   ( "fontWeight", "bolder")
+                    ]
+
+        articleStyle : Attribute msg 
+        articleStyle = 
+                style 
+                    [
+                        ( "display", "flex")
+                    ,   ( "flexFlow", "row wrap")
+                    ,   ( "margin", "2%")
+                    ]
+
+    in 
+
+        article [ articleStyle ]
+        [   
+            div []
             [
-                text "Sponsorship"
-            ,   input [ type_ "checkbox", onCheck Sponsorship ] []
-               
+                input [ type_ "text", placeholder "Title", onInput Title ] []
             ]
-        ]
-    ,   div []
-            [ button [ onClick Add  ] [text "+"] ] 
+        ,   div []
+            [
+                input [ type_ "text", placeholder "Location", onInput Location ] []
+            ]
         
-    ]
+        ,   div []
+            [
+                input [ type_ "text", placeholder "Company", onInput Company ] []
+            ]
+        ,   div []
+            [
+                input [ type_ "number", placeholder "Pay", onInput Pay ] []
+            ]
+        ,   div []
+            [
+                input [ type_ "text", placeholder "College", onInput College ] []
+            ]
+        ,   div []
+            [
+                input [ type_ "text", placeholder "Major", onInput Major] []
+            ]
+        ,   div []
+            [    
+                label []
+                [
+                    text "Sponsorship"
+                ,   input [ type_ "checkbox", onCheck Sponsorship ] []
+                   
+                ]
+            ]
+        ,   div []
+                [ button [ buttonStyle, onClick Add  ] [ text "+"] ] 
+            
+        ]
 
 
 -- JSON 

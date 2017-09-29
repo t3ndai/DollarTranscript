@@ -201,9 +201,57 @@ var _user$project$Job$Title = function (a) {
 	return {ctor: 'Title', _0: a};
 };
 var _user$project$Job$job = function (model) {
+	var articleStyle = _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'flexFlow', _1: 'row wrap'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'margin', _1: '2%'},
+					_1: {ctor: '[]'}
+				}
+			}
+		});
+	var buttonStyle = _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#F0F8FF'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '3px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'margin', _1: '20px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'border', _1: 'none'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'fontWeight', _1: 'bolder'},
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			}
+		});
 	return A2(
 		_elm_lang$html$Html$article,
-		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: articleStyle,
+			_1: {ctor: '[]'}
+		},
 		{
 			ctor: '::',
 			_0: A2(
@@ -397,8 +445,12 @@ var _user$project$Job$job = function (model) {
 													_elm_lang$html$Html$button,
 													{
 														ctor: '::',
-														_0: _elm_lang$html$Html_Events$onClick(_user$project$Job$Add),
-														_1: {ctor: '[]'}
+														_0: buttonStyle,
+														_1: {
+															ctor: '::',
+															_0: _elm_lang$html$Html_Events$onClick(_user$project$Job$Add),
+															_1: {ctor: '[]'}
+														}
 													},
 													{
 														ctor: '::',
@@ -418,13 +470,42 @@ var _user$project$Job$job = function (model) {
 		});
 };
 var _user$project$Job$view = function (model) {
-	return A2(
-		_elm_lang$html$Html$article,
-		{ctor: '[]'},
+	var articleStyle = _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
-			_0: _user$project$Job$job(model),
+			_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'flexFlow', _1: 'column wrap'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'margin', _1: '2%'},
+					_1: {ctor: '[]'}
+				}
+			}
+		});
+	return A2(
+		_elm_lang$html$Html$article,
+		{
+			ctor: '::',
+			_0: articleStyle,
 			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('Add Your Job 😉'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: _user$project$Job$job(model),
+				_1: {ctor: '[]'}
+			}
 		});
 };
 var _user$project$Job$main = _elm_lang$html$Html$program(

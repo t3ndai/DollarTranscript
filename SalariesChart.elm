@@ -4,6 +4,8 @@ import Html exposing (..)
 import Http 
 import Json.Decode as Decode exposing (..)
 import Json.Decode.Pipeline exposing (decode, required)
+import Svg 
+import Svg.Attributes exposing (..)
 
 
 -- RUN
