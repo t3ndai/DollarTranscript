@@ -4,7 +4,7 @@ import Html exposing (..)
 import Http 
 import Json.Decode as Decode exposing (..)
 import Json.Decode.Pipeline exposing (decode, required)
-import Svg 
+import Svg exposing ( svg, circle, line, text_, text , g )
 import Svg.Attributes exposing (..)
 
 
@@ -77,22 +77,40 @@ update msg model =
 
 -- VIEW 
 
+
 view : Model -> Html Msg 
 
 view model = 
-    div []
-    [ div[] (List.map viewSalary model.salaries) ]
+    article []
+    [
+      chart model 
+    ]
 
 
 
+
+chart : Model -> Svg.Svg msg  
+chart model = 
+  svg 
+     [ width "auto", height "auto", viewBox " 0 0 100 10 " ]
+     [  g[] (List.map salaryDot model.salaries )
+     ,  line [ x1 "10", x2 "90", y1 "8", y2 "8", stroke "#0074d9", strokeWidth "0.1" ][] 
+     ,  text_ [ x "6", y "9", fontSize "2" ][ Svg.text "$30k"  ] 
+     ,  text_ [ x "90", y "9" , fontSize "2" ][ Svg.text "$150k" ] 
+     ]
 
 
 viewSalary : Salary -> Html Msg 
-
 viewSalary salary = 
     div [] 
-    [ text (toString salary.pay) ]
+    [ Html.text (toString salary.pay) ]
 
+
+salaryDot : Salary -> Svg.Svg msg 
+salaryDot salary = 
+        circle [ cx (toString ( salary.pay * 80 // 150000 ) ), cy "5", r "0.5" ] []
+        
+      
 
 
 -- SUBSCRIPTIONS 
