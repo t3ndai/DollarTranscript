@@ -137,6 +137,7 @@ view model =
                         ( "display", "flex" )
                     ,   ( "flexFlow", "column wrap" )
                     ,   ( "margin", "2%" )
+                    ,   ( "alignContent", "space-between" )
                     ]
 
     in 
@@ -173,39 +174,50 @@ job model =
                     [
                         ( "display", "flex")
                     ,   ( "flexFlow", "row wrap")
-                    ,   ( "margin", "2%")
+                    ,   ( "width", "auto" )
+                    ,   ( "margin", "2%" )
+                    ,   ( "padding", "2px" )
+                    ,   ( "alignContent", "space-between" )
+                    ]
+
+        divStyle : Attribute msg 
+        divStyle = 
+                style 
+                    [
+                        ( "width", "auto" )
+                    ,   ( "padding", "1px" )
                     ]
 
     in 
 
         article [ articleStyle ]
         [   
-            div []
+            div [ divStyle ]
             [
                 input [ type_ "text", placeholder "Title", onInput Title ] []
             ]
-        ,   div []
+        ,   div [ divStyle ]
             [
                 input [ type_ "text", placeholder "Location", onInput Location ] []
             ]
         
-        ,   div []
+        ,   div [ divStyle ]
             [
                 input [ type_ "text", placeholder "Company", onInput Company ] []
             ]
-        ,   div []
+        ,   div [ divStyle ]
             [
                 input [ type_ "number", placeholder "Pay", onInput Pay ] []
             ]
-        ,   div []
+        ,   div [ divStyle ]
             [
                 input [ type_ "text", placeholder "College", onInput College ] []
             ]
-        ,   div []
+        ,   div [ divStyle ]
             [
                 input [ type_ "text", placeholder "Major", onInput Major] []
             ]
-        ,   div []
+        ,   div [ divStyle ]
             [    
                 label []
                 [

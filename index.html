@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dollar Transcript</title>
+	<meta charset="utf-8"/>
+</head>
+<body>
+	<article id="salaries"></article>
+    <article id="areas"></article>
+    <article id="job"></article>
+    <article id="search"></article>
+    <script src="elm.js"></script>
+    <script>
+
+            var salaries = document.getElementById('salaries');
+            Elm.SalariesChart.embed(salaries);
+
+            var areas = document.getElementById('areas');
+            Elm.Areas.embed(areas);
+
+            var job = document.getElementById('job');
+            Elm.Job.embed(job);
+
+            var search = document.getElementById('search');
+            Elm.Search.embed(search);
+            
+	</script>
+</body>
+<footer>Made by Dzonga</footer>
+</html>
+
