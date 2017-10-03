@@ -116,6 +116,7 @@ view model =
                 style 
                     [
                         ( "display", "flex")
+                    ,   ( "width", "auto" )    
                     ,   ( "flexFlow", "row wrap")
                     ,   ( "margin", "2%")
                     ]
@@ -151,7 +152,14 @@ searchView model =
                     ,   ( "fontWeight", "bold")
                     ]
 
-        
+        textDivStyle : Attribute msg 
+        textDivStyle = 
+                style
+                    [
+                        ( "display", "inline-block" )
+                    ,   ( "flexFlow", "row" )
+                    ,   ( "justifyContent", "space-between" )   
+                    ]
 
     in 
 
@@ -165,13 +173,11 @@ searchView model =
         [
             input [ type_ "text", placeholder "College", onInput College ] []
         ]
-    ,   div []
+    ,   div [ textDivStyle ]
         [
-            input [ type_ "range", Html.Attributes.min  "30000", Html.Attributes.max  "150000",  onInput Pay ] []
-        ,   div[]
-            [ text "$30k"
-            , text "$150k"
-            ]
+            text "$30k"
+        ,   input [ type_ "range", Html.Attributes.min  "30000", Html.Attributes.max  "150000",  onInput Pay ] []
+        ,   text "$150k"
         ]
     ,   div []
         [

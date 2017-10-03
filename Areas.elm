@@ -116,7 +116,8 @@ view model =
         articleStyle = 
                 style 
                     [
-                        ( "margin", "2%" )
+                        ( "width", "auto" )
+                    ,   ( "margin", "2%" )
                     ,   ( "display", "flex" )
                     ,   ( "flexFlow", "row wrap")
                     ,   ( "justifyContent", "space-between")

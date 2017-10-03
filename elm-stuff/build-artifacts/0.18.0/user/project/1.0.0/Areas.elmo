@@ -293,17 +293,21 @@ var _user$project$Areas$view = function (model) {
 	var articleStyle = _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'margin', _1: '2%'},
+			_0: {ctor: '_Tuple2', _0: 'width', _1: 'auto'},
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+				_0: {ctor: '_Tuple2', _0: 'margin', _1: '2%'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'flexFlow', _1: 'row wrap'},
+					_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'justifyContent', _1: 'space-between'},
-						_1: {ctor: '[]'}
+						_0: {ctor: '_Tuple2', _0: 'flexFlow', _1: 'row wrap'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'justifyContent', _1: 'space-between'},
+							_1: {ctor: '[]'}
+						}
 					}
 				}
 			}

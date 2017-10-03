@@ -262,6 +262,20 @@ var _user$project$Search$Location = function (a) {
 	return {ctor: 'Location', _0: a};
 };
 var _user$project$Search$searchView = function (model) {
+	var textDivStyle = _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'display', _1: 'inline-block'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'flexFlow', _1: 'row'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'justifyContent', _1: 'space-between'},
+					_1: {ctor: '[]'}
+				}
+			}
+		});
 	var buttonStyle = _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
@@ -351,44 +365,41 @@ var _user$project$Search$searchView = function (model) {
 					ctor: '::',
 					_0: A2(
 						_elm_lang$html$Html$div,
-						{ctor: '[]'},
 						{
 							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$input,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$type_('range'),
-									_1: {
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$min('30000'),
-										_1: {
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$max('150000'),
-											_1: {
-												ctor: '::',
-												_0: _elm_lang$html$Html_Events$onInput(_user$project$Search$Pay),
-												_1: {ctor: '[]'}
-											}
-										}
-									}
-								},
-								{ctor: '[]'}),
+							_0: textDivStyle,
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('$30k'),
 							_1: {
 								ctor: '::',
 								_0: A2(
-									_elm_lang$html$Html$div,
-									{ctor: '[]'},
+									_elm_lang$html$Html$input,
 									{
 										ctor: '::',
-										_0: _elm_lang$html$Html$text('$30k'),
+										_0: _elm_lang$html$Html_Attributes$type_('range'),
 										_1: {
 											ctor: '::',
-											_0: _elm_lang$html$Html$text('$150k'),
-											_1: {ctor: '[]'}
+											_0: _elm_lang$html$Html_Attributes$min('30000'),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$max('150000'),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$html$Html_Events$onInput(_user$project$Search$Pay),
+													_1: {ctor: '[]'}
+												}
+											}
 										}
-									}),
-								_1: {ctor: '[]'}
+									},
+									{ctor: '[]'}),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html$text('$150k'),
+									_1: {ctor: '[]'}
+								}
 							}
 						}),
 					_1: {
@@ -509,11 +520,15 @@ var _user$project$Search$view = function (model) {
 			_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'flexFlow', _1: 'row wrap'},
+				_0: {ctor: '_Tuple2', _0: 'width', _1: 'auto'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'margin', _1: '2%'},
-					_1: {ctor: '[]'}
+					_0: {ctor: '_Tuple2', _0: 'flexFlow', _1: 'row wrap'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'margin', _1: '2%'},
+						_1: {ctor: '[]'}
+					}
 				}
 			}
 		});
