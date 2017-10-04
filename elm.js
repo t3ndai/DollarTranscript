@@ -9839,7 +9839,7 @@ var _user$project$Areas$initModel = {
 	majors: {ctor: '[]'},
 	colleges: {ctor: '[]'}
 };
-var _user$project$Areas$baseUrl = {name: 'http://api.dollarTranscript.xyz/'};
+var _user$project$Areas$baseUrl = {name: 'http://api.dollartranscript.xyz'};
 var _user$project$Areas$Area = F2(
 	function (a, b) {
 		return {location: a, average: b};
@@ -10025,7 +10025,7 @@ var _user$project$Job$Job = function (a) {
 var _user$project$Job$postJob = function (model) {
 	var body = _elm_lang$http$Http$jsonBody(
 		_user$project$Job$encodeJob(model));
-	var url = 'http://api.dollarTranscript.xyz/jobs';
+	var url = 'http://api.dollartranscript.xyz/jobs';
 	var request = A3(_elm_lang$http$Http$post, url, body, _user$project$Job$voidDecoder);
 	return A2(_elm_lang$http$Http$send, _user$project$Job$Job, request);
 };
@@ -10699,7 +10699,7 @@ var _user$project$SalariesChart$NewSalaries = function (a) {
 	return {ctor: 'NewSalaries', _0: a};
 };
 var _user$project$SalariesChart$getSalaries = function () {
-	var url = 'http://api.dollarTranscript.xyz/salaries';
+	var url = 'http://api.dollartranscript.xyz/salaries';
 	var request = A2(_elm_lang$http$Http$get, url, _user$project$SalariesChart$decodeSalaries);
 	return A2(_elm_lang$http$Http$send, _user$project$SalariesChart$NewSalaries, request);
 }();
@@ -10881,7 +10881,7 @@ var _user$project$Search$SearchResults = function (a) {
 var _user$project$Search$performSearch = function (model) {
 	var body = _elm_lang$http$Http$jsonBody(
 		_user$project$Search$encodeSearch(model));
-	var url = 'http://127.0.0.1:8080/search';
+	var url = 'http://api.dollartranscript.xyz/search';
 	var request = A3(_elm_lang$http$Http$post, url, body, _user$project$Search$decodeSearchResults);
 	return A2(_elm_lang$http$Http$send, _user$project$Search$SearchResults, request);
 };

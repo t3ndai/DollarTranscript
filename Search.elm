@@ -280,7 +280,7 @@ decodeJob =
 performSearch model =
 
     let 
-        url = "http://127.0.0.1:8080/search"
+        url = "http://api.dollartranscript.xyz/search"
 
         body = 
             Http.jsonBody <| encodeSearch model

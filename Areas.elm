@@ -21,7 +21,7 @@ main =
 -- MODEL 
 
 baseUrl = 
-    { name = "http://api.dollarTranscript.xyz/" }
+    { name = "http://api.dollartranscript.xyz" }
 
 type alias Area = 
     {
