@@ -125,7 +125,7 @@ subscriptions model =
  
 getSalaries = 
     let 
-        url = "http://127.0.0.1:8080/salaries" -- replace localhost with api.dollarTranscript.xyz/salaries
+        url = "http://api.dollarTranscript.xyz/salaries" -- replace localhost with api.dollarTranscript.xyz/salaries
 
         request = 
         

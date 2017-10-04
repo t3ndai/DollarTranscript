@@ -264,7 +264,7 @@ voidDecoder =
 
 postJob model = 
     let 
-        url = "http://127.0.0.1:8080/jobs"
+        url = "http://api.dollarTranscript.xyz/jobs"
 
         body = 
             Http.jsonBody <| encodeJob model

@@ -21,7 +21,7 @@ main =
 -- MODEL 
 
 baseUrl = 
-    { name = "http://127.0.0.1:8080/" }
+    { name = "http://api.dollarTranscript.xyz/" }
 
 type alias Area = 
     {

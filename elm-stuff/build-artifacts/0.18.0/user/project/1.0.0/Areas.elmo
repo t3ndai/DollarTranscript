@@ -383,7 +383,7 @@ var _user$project$Areas$initModel = {
 	majors: {ctor: '[]'},
 	colleges: {ctor: '[]'}
 };
-var _user$project$Areas$baseUrl = {name: 'http://127.0.0.1:8080/'};
+var _user$project$Areas$baseUrl = {name: 'http://api.dollarTranscript.xyz/'};
 var _user$project$Areas$Area = F2(
 	function (a, b) {
 		return {location: a, average: b};
