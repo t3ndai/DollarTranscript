@@ -1,11 +1,12 @@
 module SalariesChart exposing (..)
 
 import Html exposing (..)
+import Html.Attributes as Attributes exposing (..)
 import Http 
 import Json.Decode as Decode exposing (..)
-import Json.Decode.Pipeline exposing (decode, required)
+import Json.Decode.Pipeline  as Pipeline exposing (decode, required)
 import Svg exposing ( svg, circle, line, text_, text , g )
-import Svg.Attributes exposing (..)
+import Svg.Attributes as SvgAttributes exposing (..)
 
 
 -- RUN
@@ -81,10 +82,24 @@ update msg model =
 view : Model -> Html Msg 
 
 view model = 
-    article []
-    [
-      chart model 
-    ]
+
+    let 
+        articleStyle: Attribute msg 
+        articleStyle =
+                  Attributes.style 
+                      [
+                          ( "display", "flex")
+                      ,   ( "width", "auto" )    
+                      ,   ( "flexFlow", "row wrap")
+                      ,   ( "margin", "2%")
+                      ]   
+
+    in 
+        article [ articleStyle ]
+        [
+          h2 [][ Html.text "View Anonymous Salary reports"]
+        ,  chart model 
+        ]
 
 
 
@@ -92,7 +107,7 @@ view model =
 chart : Model -> Svg.Svg msg  
 chart model = 
   svg 
-     [ width "auto", height "auto", viewBox " 0 0 100 10 " ]
+     [ SvgAttributes.width "auto", SvgAttributes.height "auto", viewBox " 0 0 100 10 " ]
      [  g[] (List.map salaryDot model.salaries )
      ,  line [ x1 "10", x2 "90", y1 "8", y2 "8", stroke "#0074d9", strokeWidth "0.1" ][] 
      ,  text_ [ x "6", y "9", fontSize "2" ][ Svg.text "$30k"  ] 
@@ -148,6 +163,6 @@ decodeSalary : Decode.Decoder Salary
 decodeSalary = 
 
       decode Salary 
-             |> required "pay" Decode.int 
+             |> Pipeline.required "pay" Decode.int 
 
 

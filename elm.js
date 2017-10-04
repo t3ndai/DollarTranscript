@@ -10635,13 +10635,46 @@ var _user$project$SalariesChart$chart = function (model) {
 		});
 };
 var _user$project$SalariesChart$view = function (model) {
-	return A2(
-		_elm_lang$html$Html$article,
-		{ctor: '[]'},
+	var articleStyle = _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
-			_0: _user$project$SalariesChart$chart(model),
+			_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'width', _1: 'auto'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'flexFlow', _1: 'row wrap'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'margin', _1: '2%'},
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		});
+	return A2(
+		_elm_lang$html$Html$article,
+		{
+			ctor: '::',
+			_0: articleStyle,
 			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$h2,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('View Anonymous Salary reports'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: _user$project$SalariesChart$chart(model),
+				_1: {ctor: '[]'}
+			}
 		});
 };
 var _user$project$SalariesChart$update = F2(
