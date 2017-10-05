@@ -107,7 +107,7 @@ view model =
 chart : Model -> Svg.Svg msg  
 chart model = 
   svg 
-     [ SvgAttributes.width "auto", SvgAttributes.height "auto", viewBox " 0 0 100 10 " ]
+     [  SvgAttributes.width "100%", SvgAttributes.height "10%", viewBox " 0 0 100 10 " ]
      [  g[] (List.map salaryDot model.salaries )
      ,  line [ x1 "10", x2 "90", y1 "8", y2 "8", stroke "#0074d9", strokeWidth "0.1" ][] 
      ,  text_ [ x "6", y "9", fontSize "2" ][ Svg.text "$30k"  ] 

@@ -36,10 +36,10 @@ var _user$project$SalariesChart$chart = function (model) {
 		_elm_lang$svg$Svg$svg,
 		{
 			ctor: '::',
-			_0: _elm_lang$svg$Svg_Attributes$width('auto'),
+			_0: _elm_lang$svg$Svg_Attributes$width('100%'),
 			_1: {
 				ctor: '::',
-				_0: _elm_lang$svg$Svg_Attributes$height('auto'),
+				_0: _elm_lang$svg$Svg_Attributes$height('10%'),
 				_1: {
 					ctor: '::',
 					_0: _elm_lang$svg$Svg_Attributes$viewBox(' 0 0 100 10 '),
